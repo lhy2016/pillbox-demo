@@ -45,6 +45,9 @@
     z-index:-1;
     background-image: url("../img/sideNavBackground.jpg"); 
     opacity: 0.15;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position:20%;
 }
 .side-menu-wrapper button {
     display:block;
