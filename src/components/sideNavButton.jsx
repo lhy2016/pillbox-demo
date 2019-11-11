@@ -5,7 +5,6 @@ class SideNavButton extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            active: false,
             tabId: props.tabId
         };
     }
