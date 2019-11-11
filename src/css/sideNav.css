@@ -71,7 +71,7 @@
     color:#a9afbb;
 }
 .side-menu-wrapper button:hover {
-    background-color:#ebebeb;
+    background-color:rgba(200,200,200,0.25);;
     
 }
 .side-menu-wrapper button:focus {
