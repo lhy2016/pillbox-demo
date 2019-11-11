@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
-import '../css/sideNav.css'
+import '../css/sideNav.css';
+import SideNavButton from '../components/sideNavButton';
+
 
 
 class SideNav extends Component {
-    render() { 
+    constructor(props) {
+        super(props);
+        var toogleActive = this.toogleActive.bind(this);
+        this.state = {
+            currentActive: 1,
+        };
+    }
+    toogleActive(tabId) {
+        this.setState({
+            currentActive: tabId
+        })
+    }
+    render() {
+        var toogleActive = this.toogleActive; 
         return (
         <nav className="sideNav">
             <a href="#" className="logo">
@@ -15,18 +30,16 @@ class SideNav extends Component {
                          margin:"0px 15px"}}> 
             </div>
             <div className = "side-menu-wrapper">
-                <button>
-                    <i class="material-icons">dashboard</i>
-                    Dashboard
-                </button>
-                <button>
-                    <i class="material-icons">person</i>
-                    My Account</button>
-                <button>
-                    <i class="material-icons">local_hospital</i>
-                    Pill Box</button>
-                <button>
-                    <i class="material-icons">info</i>Health Tips</button>
+                <SideNavButton  iconValue="dashboard" buttonText="Dashboard" tabId="1" 
+                                toogleActive={toogleActive.bind(this)} currentActive={this.state.currentActive} />
+                <SideNavButton  iconValue="person" buttonText="My Account" tabId="2"
+                                toogleActive={toogleActive.bind(this)} currentActive={this.state.currentActive}/>
+                <SideNavButton  iconValue="local_hospital" buttonText="Pill Box" tabId="3"
+                                toogleActive={toogleActive.bind(this)} currentActive={this.state.currentActive}/>
+                <SideNavButton  iconValue="info" buttonText="Health Tips" tabId="4"
+                                toogleActive={toogleActive.bind(this)} currentActive={this.state.currentActive}/>
+            </div>
+            <div className = "sideNavBackground">
             </div>
         </nav>
         );
