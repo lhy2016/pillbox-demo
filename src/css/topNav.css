@@ -1,0 +1,8 @@
+.topNav {
+    margin-left: 260px;
+    text-align: left;
+    padding:10px 15px;
+}
+.topNav div {
+    display:inline-block;
+}

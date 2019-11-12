@@ -40,6 +40,8 @@ class SideNav extends Component {
                                 toogleActive={toogleActive.bind(this)} currentActive={this.state.currentActive}/>
                 <SideNavButton  iconValue="notifications" buttonText="Notifications " tabId="5"
                                 toogleActive={toogleActive.bind(this)} currentActive={this.state.currentActive}/>
+                <SideNavButton  iconValue="help_outline" buttonText="Help Center" tabId="6"
+                                toogleActive={toogleActive.bind(this)} currentActive={this.state.currentActive}/>
             </div>
             <div className = "sideNavBackground">
             </div>
