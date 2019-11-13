@@ -1,7 +1,26 @@
 .topNav {
-    margin-left: 260px;
     text-align: left;
     padding:10px 15px;
+    background-color: transparent !important;
+    box-shadow:none;
+    position:absolute;
+    width:100%;
+    z-index:1029;
+    height: auto !important;
+    color: #555;
+    right: 0;
+    left: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin:0px 16px;
+}
+.title {
+    display: inline-flex;
+    align-items: center;
+    font-size:18px;
+    padding: 8px 0px;
 }
 .topNav div {
     display:inline-block;

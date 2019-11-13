@@ -2,6 +2,7 @@ import React from 'react';
 import './css/App.css';
 import SideNav from './components/sideNav';
 import TopNav from './components/topNav';
+import MainPanel from './components/mainPanel';
 
 class App extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class App extends React.Component {
     return (
     <div className="App">
       <SideNav />
-      <TopNav />
+      <MainPanel />
     </div>
     );
   }

@@ -1,0 +1,15 @@
+.main-panel {
+    transition-property: top,bottom,width;
+    transition-duration: .2s,.2s,.35s;
+    transition-timing-function: linear,linear,ease;
+    -webkit-overflow-scrolling: touch;
+    width: calc(100% - 260px);
+    position:relative;
+    float:right;
+    box-sizing: border-box;
+    font-family: Roboto,Helvetica,Arial,sans-serif;
+    color:#3c4858;
+    font-weight: 300;
+    line-height: 1.5em;
+    transition: all .33s cubic-bezier(.685,.0473,.346,1);
+}
