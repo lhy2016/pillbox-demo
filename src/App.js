@@ -3,6 +3,12 @@ import './css/App.css';
 import SideNav from './components/sideNav';
 import TopNav from './components/topNav';
 import MainPanel from './components/mainPanel';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
 class App extends React.Component {
   constructor(props) {
@@ -15,7 +21,7 @@ class App extends React.Component {
     return (
     <div className="App">
       <SideNav />
-      <MainPanel />
+      <MainPanel activeSideTab={this.state.activeSideTab} />
     </div>
     );
   }
