@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import TopNav from './topNav';
-import PillBox from './pillBoxPanel';
+import PillBox from './pillBox';
 import '../css/mainPanel.css';
 
 class MainPanel extends Component {

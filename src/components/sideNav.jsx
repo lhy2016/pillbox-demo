@@ -7,7 +7,6 @@ import SideNavButton from '../components/sideNavButton';
 class SideNav extends Component {
     constructor(props) {
         super(props);
-        var toogleActive = this.toogleActive.bind(this);
         this.state = {
             currentActive: 1,
         };

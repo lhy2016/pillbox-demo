@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-import '../css/pillBox.css';
+import '../css/dashBoard.css';
 
-class PillBox extends Component {
+class DashBoard extends Component {
     render() {
         return (
         <div className="pill-box">
-            <a className="pill-box-button pill-schedule"><i class="material-icons">
-schedule
-</i>Pill Schedule</a>
+            <a className="pill-box-button pill-schedule">
+                <i class="material-icons">
+                    schedule
+                </i>Pill Schedule   
+            </a>
             <a className="pill-box-button pillbox-status">Pill Box Status</a>
             <a className="pill-box-button find-my-pillbox">Find My Pill Box</a>
             <a className="pill-box-button alarm-setting">Alarm Setting</a>
@@ -16,4 +18,4 @@ schedule
         </div>);
     }
 }
-export default PillBox;
+export default DashBoard;

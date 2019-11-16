@@ -1,0 +1,28 @@
+.pill-box {
+    position: absolute;
+    top: 50px;
+    left: 20px;
+    height: auto;
+    padding: 30px 30px;
+    text-align:left;
+}
+.pill-box .pill-box-button {
+    width:150px;
+    height:150px;
+    text-align:center;
+    background-color:#cccccc;
+    color:#e0630f !important;
+    border-radius: 6px;
+    margin:20px;
+    display:inline-block;
+    line-height:215px;
+    position:relative;
+}
+.pill-box .pill-box-button i {
+    font-size:67px;
+    display:block;
+    position:absolute;
+    left:50%;
+    top:15%;
+    transform:translate(-50%,0%);
+}
