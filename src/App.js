@@ -1,13 +1,9 @@
 import React from 'react';
 import './css/App.css';
 import SideNav from './components/sideNav';
-import TopNav from './components/topNav';
 import MainPanel from './components/mainPanel';
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
+  BrowserRouter as Router
 } from "react-router-dom";
 
 class App extends React.Component {
@@ -17,12 +13,27 @@ class App extends React.Component {
       activeSideTab:1,
     };
   }
+  changeActive = (tabId) => {
+    this.setState({
+      activeSideTab: tabId
+    });
+  }
   render () {
+    const tabIdToUrl = {
+      1:"/",
+      2:"/account",
+      3:"pillBox",
+      4:"healthcare",
+      5:"notification",
+      6:"help"
+    };
     return (
-    <div className="App">
-      <SideNav />
-      <MainPanel activeSideTab={this.state.activeSideTab} />
-    </div>
+    <Router>
+      <div className="App">
+        <SideNav urlMapping={tabIdToUrl} changeActive={this.changeActive} currentActiveTab={this.state.activeSideTab} />
+        <MainPanel activeSideTab={this.state.activeSideTab} />
+      </div>
+    </Router>
     );
   }
 }

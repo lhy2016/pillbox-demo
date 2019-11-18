@@ -51,7 +51,7 @@
     background-size:cover;
     background-position:20%;
 }
-.side-menu-wrapper button {
+.side-menu-wrapper a {
     display:block;
     text-align:left;
     width:100%;
@@ -66,7 +66,7 @@
     font-size: 14px;
     color:#3c4858;
 }
-.side-menu-wrapper button i {
+.side-menu-wrapper a i {
     font-size: 24px;
     float: left;
     margin-right: 15px;
@@ -75,18 +75,19 @@
     text-align: center;
     color:#a9afbb;
 }
-.side-menu-wrapper button:hover {
-    background-color:rgba(200,200,200,0.25);;
-    
+.side-menu-wrapper a:hover {
+    background-color:rgba(200,200,200,0.25);
+    text-decoration: none;
+    color:#3c4858;
 }
-.side-menu-wrapper button:focus {
+.side-menu-wrapper a:focus {
     outline:0px;
 }
-.side-menu-wrapper button.active {
+.side-menu-wrapper a.active {
     background-color: #1293e9;
     box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(156,39,176,.4);
     color: #ffffff;
 }
-.side-menu-wrapper button.active i {
+.side-menu-wrapper a.active i {
     color: #ffffff;
 }
