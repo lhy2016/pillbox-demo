@@ -1,8 +1,14 @@
 .pillBox-container {
-    min-width: 400px;
+    min-width: 660px;
     max-width: 900px;
     width:80%;
-    margin:70px auto;
+    margin:140px auto;
     border:1px solid red;
     height:1000px;
+    padding:30px;
+}
+.pillSchedule {
+    background-color: rgb(209, 209, 209);
+    height:500px;
+    width:600px;
 }
