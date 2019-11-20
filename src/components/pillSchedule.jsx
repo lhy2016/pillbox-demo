@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ScheduleRow from './scheduleRow';
 class PillSchedule extends Component {
     constructor(props) {
         super(props);
@@ -7,7 +8,7 @@ class PillSchedule extends Component {
         };
     }
     componentDidMount() {
-        console.log("mounted");
+        this.tick();
         this.intervalID = setInterval(
              this.tick, 1000);
     }
@@ -19,6 +20,7 @@ class PillSchedule extends Component {
         var day = dateObj.getDay();
         var date = dateObj.getDate();
         var month = dateObj.getMonth() + 1;
+        var year = dateObj.getFullYear();
         var dayStr = {
             1: "Monday",
             2: "Tuesday",
@@ -43,15 +45,20 @@ class PillSchedule extends Component {
             12: "December"
         }
         this.setState({
-            dateStr: dayStr[day] + ", " + date + " " + monStr[month]
+            dateStr: dayStr[day] + ", " + monStr[month] + " " + date + ", " + year
         });
     }
     render() {
         return(
         <div className="pillSchedule">
             <div className="date">
-        <b>Today</b> <span className="dateShower">{this.state.dateStr}</span>
+                <span className="schedule-sideMenu">
+                    <i class="material-icons">menu</i>
+                </span>
+                <span style={{margin:"auto"}}><b>Today</b> <span className="dateShower">{this.state.dateStr}</span></span>
+                <span className="datePicker"><i class="material-icons">date_range</i></span>
             </div>
+            <ScheduleRow />
         </div>);
     }
 }
