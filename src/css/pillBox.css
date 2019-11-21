@@ -8,7 +8,7 @@
     padding:20px;
 }
 .pillSchedule {
-    background-color: #87aedb;
+    background-color: #f3d68c;
     height:500px;
     width:600px;
     box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
@@ -39,8 +39,44 @@
 .scheduleRow {
     background-color: white;
     width:90%;
-    height:120px;
-    margin:10px auto;
-    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    height:110px;
+    margin:15px auto;
+    box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(255,152,0,.4);
     border-radius: 8px;
+    position:relative;
+}
+.Instruction {
+    width: 32%;
+    padding:8px 0px 8px 10px;
+    position:relative;
+    top: 20px;
+    font-family: Helvetica,Arial,sans-serif;
+    font-size:14px;
+    text-align:left;
+    top:50%;
+    bottom:50%;
+    transform: translate(0%, -50%);
+    float:left;
+}
+.pillName {
+    position:absolute;
+    background-color:rgb(241, 109, 33);
+    top:-15px;
+    padding:4px 10px;
+    z-index:5;
+    color:#ffffff;
+    font-weight: 400;
+}
+.timeOfDayIconContainer {
+    float:left;
+}
+.timeOfDay {
+    display: inline-block;
+    width:40px;
+    height:40px;
+    background-image: url("../img/morning.png");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    top: -15px;
 }
