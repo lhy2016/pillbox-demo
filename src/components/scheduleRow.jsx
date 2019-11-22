@@ -10,7 +10,15 @@ class ScheduleRow extends Component {
                     Take 2 tablets by mouth everyday
                 </div>
                 <div className="timeOfDayIconContainer">
-                    <div className="morning timeOfDay"></div>
+                    <div className="morning timeOfDay">
+                        <div className="doseVolume volumeMorning">1</div>
+                    </div>
+                    <div className="noon timeOfDay"></div>
+                    <div className="evening timeOfDay">
+                    <div className="doseVolume volumeEvening">1</div>
+                    </div>
+                    <div className="night timeOfDay"></div>
+    
                 </div>
                
             </div>

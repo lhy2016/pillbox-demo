@@ -61,22 +61,60 @@
 .pillName {
     position:absolute;
     background-color:rgb(241, 109, 33);
-    top:-15px;
+    top:-16px;
     padding:4px 10px;
     z-index:5;
     color:#ffffff;
     font-weight: 400;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
 }
 .timeOfDayIconContainer {
     float:left;
 }
 .timeOfDay {
     display: inline-block;
-    width:40px;
-    height:40px;
-    background-image: url("../img/morning.png");
+    width:36px;
+    height:36px;
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
     position: relative;
-    top: -15px;
+    box-shadow: 0 1px 4px 0 rgba(0,0,0,.14);
+    margin-left:8px;
+}
+.morning {
+    background-color: rgb(243, 193, 29);
+    background-image: url("../img/morning.png");
+    background-size: 80% 80%;
+    margin-left:8px;
+}
+.noon {
+    background-color:orange;
+    background-image: url("../img/noon.png");
+    background-size:76% 76%;
+}
+.evening {
+    background-color: rgb(42, 61, 231);
+    background-image: url("../img/evening.png");
+    background-size:72% 72%;
+}
+.night {
+    background-color: rgb(21, 19, 122);
+    background-image: url("../img/night.png");
+    background-size:70% 70%;
+}
+.doseVolume {
+    position:absolute;
+    top:100%;
+    width:100%;
+    height:100%;
+    font-size:16px;
+    font-weight: 500;
+    line-height:36px;
+}
+.volumeMorning {
+    border:1px dashed rgb(243, 193, 29);
+}
+.volumeEvening {
+    border:1px dashed  rgb(42, 61, 231);
 }
