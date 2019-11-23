@@ -27,11 +27,19 @@ class App extends React.Component {
       5:"notification",
       6:"help"
     };
+    const tabIdToTitle = {
+      1:"Dashboard",
+      2:"Account",
+      3:"Pill Box",
+      4:"Healthcare",
+      5:"Notifications",
+      6:"Help Center"
+    };
     return (
     <Router>
       <div className="App">
         <SideNav urlMapping={tabIdToUrl} changeActive={this.changeActive} currentActiveTab={this.state.activeSideTab} />
-        <MainPanel activeSideTab={this.state.activeSideTab} />
+        <MainPanel activeSideTab={this.state.activeSideTab} tabIdToTitle={tabIdToTitle}/>
       </div>
     </Router>
     );

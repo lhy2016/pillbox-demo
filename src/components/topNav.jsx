@@ -6,7 +6,7 @@ class TopNav extends Component {
         return(
             <nav className="topNav">
                 <div className="title">
-                    Pill Box
+                    {this.props.title}
                 </div>
             </nav>
         );
