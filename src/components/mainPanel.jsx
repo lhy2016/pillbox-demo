@@ -3,7 +3,7 @@ import TopNav from './topNav';
 import '../css/mainPanel.css';
 import PillBox from './pillBox';
 import DashBoard from './dashBoard';
-import {Switch, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 
 class MainPanel extends Component {
     render() {

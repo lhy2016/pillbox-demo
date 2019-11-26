@@ -13,3 +13,39 @@
     line-height: 1.5em;
     transition: all .33s cubic-bezier(.685,.0473,.346,1);
 }
+.main-content {
+    min-width: 660px;
+    width:95%;
+    margin:100px auto 20px;
+    border:1px dashed orange;
+    height:1000px;
+    padding:20px;
+}
+.patient-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-stretch: normal;
+    margin-bottom:20px;
+}
+.patient-title b {
+    font-weight: 600;
+}
+.MRI {
+    float: left;
+    padding: 0px 10px 0px 0px;
+}
+.patient-Name {
+    float: left;
+    margin-left: 20px;
+}
+.dashBoard-sideMenu {
+    height:600px;
+   
+    border:1px dashed blue;
+}
+.graph-container {
+    padding: 15px;
+}
+.lastReading {
+    padding:12px 0px;
+    font-weight:500;
+}
