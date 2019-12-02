@@ -53,10 +53,10 @@ class PillSchedule extends Component {
         <div className="pillSchedule">
             <div className="date">
                 <span className="schedule-sideMenu">
-                    <i class="material-icons">menu</i>
+                    <i className="material-icons">menu</i>
                 </span>
                 <span style={{margin:"auto"}}><b>Today</b> <span className="dateShower">{this.state.dateStr}</span></span>
-                <span className="datePicker"><i class="material-icons">date_range</i></span>
+                <span className="datePicker"><i className="material-icons">date_range</i></span>
             </div>
             <ScheduleRow />
         </div>);
