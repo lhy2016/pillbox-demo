@@ -8,7 +8,7 @@ class DashBoard extends Component {
         console.log(this.chartReference); // returns a Chart.js instance reference
     }
     render() {
-        const weightData = [162.4, 165.4, 162.8, 161, 163.6, 165.6, 163];
+        const weightData = [162.4, 163.4, 162.8, 161, 163.6, 165.6, 163];
         const data = (canvas) => {
             const ctx = canvas.getContext("2d");
             const gradient = ctx.createLinearGradient(0,0,500,0);
@@ -25,19 +25,19 @@ class DashBoard extends Component {
                 gradient.addColorStop(0, "cyan");
             }
             return {
-            labels: ['Nov 28', 'Nov29', 'Nov 30', 'Dec 1', 'Dec 2', 'Dec 3', 'Dec 4'],
+            labels: ['Nov 28', 'Nov 29', 'Nov 30', 'Dec 1', 'Dec 2', 'Dec 3', 'Dec 4'],
             datasets: [
               {
                 label: 'My First dataset',
                 fill: false,
-                lineTension: 0.1, 
+                lineTension: 0.34, 
                 borderColor: gradient,
                 borderCapStyle: 'butt',
                 borderJoinStyle: 'round',
-                pointBorderColor: '#000000',
+                pointBorderColor: '#777777',
                 pointBackgroundColor: '#ffffff',
                 pointBorderWidth: 1,
-                pointHoverRadius: 4,
+                pointHoverRadius: 3,
                 pointHoverBackgroundColor: '#00ff00',
                 pointHoverBorderColor: '#ff0000',
                 pointHoverBorderWidth: 2,
@@ -49,12 +49,21 @@ class DashBoard extends Component {
             }
         };
         const options = {
+            title: {
+                display: true,
+                text: 'Weight last week (lbs)',
+                fontSize: 14
+            },
             scales: {
                 yAxes:[{
                     ticks:{
-                        suggestedMin:140
+                        suggestedMin:150
                     }
                 }]
+            },
+            legend: {
+                position: 'top',
+                align:'end'
             }
         };
         return (
