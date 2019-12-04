@@ -13,3 +13,11 @@
     line-height: 1.5em;
     transition: all .33s cubic-bezier(.685,.0473,.346,1);
 }
+.main-content {
+    min-width: 660px;
+    width:95%;
+    margin:100px auto 20px;
+    border:1px dashed orange;
+    height:1000px;
+    padding:20px;
+}

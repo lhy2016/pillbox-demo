@@ -1,28 +1,115 @@
-.pill-box {
-    position: absolute;
-    top: 50px;
-    left: 20px;
-    height: auto;
-    padding: 30px 30px;
-    text-align:left;
+
+.patient-title {
+    font-family: 'Times New Roman', Times, serif;
+    font-stretch: normal;
+    margin-bottom:20px;
 }
-.pill-box .pill-box-button {
-    width:150px;
-    height:150px;
-    text-align:center;
-    background-color:#cccccc;
-    color:#e0630f !important;
-    border-radius: 6px;
-    margin:20px;
-    display:inline-block;
-    line-height:215px;
+.patient-title b {
+    font-weight: 600;
+}
+.MRI {
+    float: left;
+    padding: 0px 10px 0px 0px;
+}
+.patient-Name {
+    float: left;
+    margin-left: 20px;
+}
+.dashBoard-sideMenu {
+    height:600px;
+}
+.graph-container {
+    padding: 15px;
+}
+.lastReading {
+    padding:12px 0px;
+    font-weight:500;
+}
+.meters {
+	font-size: 13px;
+	font-weight:300;
+}
+.meter-name {
+	font-weight:400;
+}
+.xai-dialogue {
+    height: 370px;
+    border: 1px solid #aaaaaa;
+    border-radius: 4px;
+}
+.xai-title {
+    border-radius:3px 3px 0px 0px;
+    padding:3px 0px;
+    background-color:#dddddd;
+    color:#3c4858;
+    font-weight:400;
+    font-size:13px;
+    border-bottom:1px solid #aaaaaa;
+}
+.dialogue-container {
+    position:relative;
+    height:330px;
+    overflow:hidden;
+}
+.dialogue-container:hover {
+    overflow:auto;
+}
+.ai-message {
+    padding:5px;
+    text-align:left;
+    font-size:13px;
+    width:60%;
+    background-color:white;
+    color:black;
+    margin-top:10px;
+    margin-left:15px;
+    line-height:1.37em;
+    border-radius:4px;
     position:relative;
 }
-.pill-box .pill-box-button i {
-    font-size:67px;
-    display:block;
+.patient-message {
+    padding:5px;
+    text-align:left;
+    font-size:13px;
+    width:60%;
+    right:-33.3%;
+    background-color:#1293e9;
+    color:white;
+    margin-top:10px;
+    margin-right:15px;
+    line-height:1.37em;
+    border-radius:4px;
+    position:relative;
+}
+.leftArrow {
     position:absolute;
-    left:50%;
-    top:15%;
-    transform:translate(-50%,0%);
+    border-right:5px solid white;
+    border-left:5px solid transparent;
+    border-top: 5px solid transparent;
+    border-bottom:5px solid transparent;
+    width:0px;
+    height:0px;
+    top:50%;
+    -webkit-transform: translate(0%, -50%);
+    -moz-transform: translate(0%, -50%); 
+    -ms-transform: translate(0%, -50%); 
+    -o-transform: translate(0%, -50%); 
+    transform: translate(0%, -50%); 
+    left:-10px;
+}
+.rightArrow {
+    position:absolute;
+    border-right:5px solid transparent;
+    border-left:5px solid #1293e9;
+    border-top: 5px solid transparent;
+    border-bottom:5px solid transparent;
+    width:0px;
+    height:0px;
+    top:50%;
+    right:-10px;
+    -webkit-transform: translate(0%, -50%);
+    -moz-transform: translate(0%, -50%); 
+    -ms-transform: translate(0%, -50%); 
+    -o-transform: translate(0%, -50%); 
+    transform: translate(0%, -50%); 
 }
