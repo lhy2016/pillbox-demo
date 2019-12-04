@@ -8,15 +8,24 @@ class DashBoard extends Component {
         console.log(this.chartReference); // returns a Chart.js instance reference
     }
     render() {
+        const weightData = [162.4, 165.4, 162.8, 161, 163.6, 165.6, 163];
         const data = (canvas) => {
             const ctx = canvas.getContext("2d");
             const gradient = ctx.createLinearGradient(0,0,500,0);
-            gradient.addColorStop(0, "orange");
-            gradient.addColorStop(1, "white");
-
-            console.log(gradient);
+            for (var i = 1; i < weightData.length;i++) {
+                if (weightData[i] - weightData[i-1] >= 2) {
+                    gradient.addColorStop(1.0 * i / (weightData.length - 1), "red");
+                } else {
+                    gradient.addColorStop(1.0 * i / (weightData.length - 1), "cyan");
+                }
+            }
+            if (weightData[1] - weightData[0] >= 2) {
+                gradient.addColorStop(0, "red");
+            } else {
+                gradient.addColorStop(0, "cyan");
+            }
             return {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+            labels: ['Nov 28', 'Nov29', 'Nov 30', 'Dec 1', 'Dec 2', 'Dec 3', 'Dec 4'],
             datasets: [
               {
                 label: 'My First dataset',
@@ -34,12 +43,20 @@ class DashBoard extends Component {
                 pointHoverBorderWidth: 2,
                 pointRadius: 4,
                 pointHitRadius: 0,
-                data: [65, 59, 80, 81, 56, 55, 40]
+                data: weightData
               }
             ]
             }
         };
-     
+        const options = {
+            scales: {
+                yAxes:[{
+                    ticks:{
+                        suggestedMin:140
+                    }
+                }]
+            }
+        };
         return (
         <div className="dashBoard">
             <div className="patient-title">
@@ -93,7 +110,7 @@ class DashBoard extends Component {
                 </div>
                 <div className="graph-container col-xl-9 col-lg-9 col-md-8">
                     <div className="row">
-                        <div className="col-xl-6"> <Line ref={(reference) => this.chartReference = reference } data={data} height={200} /></div>
+                        <div className="col-xl-6"> <Line ref={(reference) => this.chartReference = reference } data={data} height={200} options={options} /></div>
                         <div className="col-xl-6"><Line data={data} height={200} /></div>
                     </div>
                     <div className="row">
