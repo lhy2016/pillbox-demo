@@ -8,7 +8,7 @@ class SideNav extends Component {
     render() {
         return (
         <nav className="sideNav">
-            <a href="#" className="logo">
+            <a href="\" className="logo">
                 <div className="logo-content">
                     Pill Box Demo
                 </div>

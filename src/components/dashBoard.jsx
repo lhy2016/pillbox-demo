@@ -3,33 +3,43 @@ import {Line} from 'react-chartjs-2';
 import '../css/dashBoard.css';
 
 class DashBoard extends Component {
+    chartReference = {};
+    componentDidMount() {
+        console.log(this.chartReference); // returns a Chart.js instance reference
+    }
     render() {
-        const data = {
+        const data = (canvas) => {
+            const ctx = canvas.getContext("2d");
+            const gradient = ctx.createLinearGradient(0,0,500,0);
+            gradient.addColorStop(0, "orange");
+            gradient.addColorStop(1, "white");
+
+            console.log(gradient);
+            return {
             labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
             datasets: [
               {
                 label: 'My First dataset',
                 fill: false,
-                lineTension: 0.1,
-                backgroundColor: 'rgba(75,192,192,0.4)',
-                borderColor: 'rgba(75,192,192,1)',
+                lineTension: 0.1, 
+                borderColor: gradient,
                 borderCapStyle: 'butt',
-                borderDash: [],
-                borderDashOffset: 0.0,
-                borderJoinStyle: 'miter',
-                pointBorderColor: 'rgba(75,192,192,1)',
-                pointBackgroundColor: '#fff',
+                borderJoinStyle: 'round',
+                pointBorderColor: '#000000',
+                pointBackgroundColor: '#ffffff',
                 pointBorderWidth: 1,
-                pointHoverRadius: 5,
-                pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-                pointHoverBorderColor: 'rgba(220,220,220,1)',
+                pointHoverRadius: 4,
+                pointHoverBackgroundColor: '#00ff00',
+                pointHoverBorderColor: '#ff0000',
                 pointHoverBorderWidth: 2,
-                pointRadius: 5,
-                pointHitRadius: 10,
+                pointRadius: 4,
+                pointHitRadius: 0,
                 data: [65, 59, 80, 81, 56, 55, 40]
               }
             ]
-          };
+            }
+        };
+     
         return (
         <div className="dashBoard">
             <div className="patient-title">
@@ -83,12 +93,12 @@ class DashBoard extends Component {
                 </div>
                 <div className="graph-container col-xl-9 col-lg-9 col-md-8">
                     <div className="row">
-                        <div className="col-xl-6"> <Line data={data} /></div>
-                        <div className="col-xl-6"><Line data={data} /></div>
+                        <div className="col-xl-6"> <Line ref={(reference) => this.chartReference = reference } data={data} height={200} /></div>
+                        <div className="col-xl-6"><Line data={data} height={200} /></div>
                     </div>
                     <div className="row">
-                        <div className="col-xl-6"> <Line data={data} /></div>
-                        <div className="col-xl-6"><Line data={data} /></div>
+                        <div className="col-xl-6"><Line data={data} height={200} /></div>
+                        <div className="col-xl-6"><Line data={data} height={200} /></div>
                     </div>
                 </div>
             </div>
