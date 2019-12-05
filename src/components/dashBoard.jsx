@@ -1,29 +1,72 @@
 import React, { Component } from 'react';
-import {Line} from 'react-chartjs-2';
+import {Line, Chart} from 'react-chartjs-2';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 import '../css/dashBoard.css';
 
 class DashBoard extends Component {
-    chartReference = {};
+    weightReference = {};
     componentDidMount() {
-        console.log(this.chartReference); // returns a Chart.js instance reference
+        Chart.plugins.unregister(ChartDataLabels);
+        /* console.log(this.weightReference); */
+        window.addEventListener("resize", ()=>{});
     }
+
+    renderGradient = (weightData, gradient) => {
+        for (var i = 1; i < weightData.length;i++) {
+            if (weightData[i] - weightData[i-1] >= 2) {
+                gradient.addColorStop(1.0 * i / (weightData.length - 1), "red");
+            } else {
+                gradient.addColorStop(1.0 * i / (weightData.length - 1), "cyan");
+            }
+        }
+        if (weightData[1] - weightData[0] >= 2) {
+            gradient.addColorStop(0, "red");
+        } else {
+            gradient.addColorStop(0, "cyan");
+        }
+    }
+
     render() {
         const weightData = [162.4, 163.4, 162.8, 161, 163.6, 165.6, 163];
-        const data = (canvas) => {
-            const ctx = canvas.getContext("2d");
-            const gradient = ctx.createLinearGradient(0,0,500,0);
-            for (var i = 1; i < weightData.length;i++) {
-                if (weightData[i] - weightData[i-1] >= 2) {
-                    gradient.addColorStop(1.0 * i / (weightData.length - 1), "red");
-                } else {
-                    gradient.addColorStop(1.0 * i / (weightData.length - 1), "cyan");
+        const plugins = [ChartDataLabels];
+        const options = {
+            plugins: {
+                datalabels: {
+                   display: function(ctx) {
+                    return ctx.dataIndex === ctx.dataset.data.length - 1;
+                   },
+                   
+                   color: 'black',
+                   formatter : function(value, context) {
+                       return "Current: \n" + value + " lbs";
+                   },
+                   anchor: 'start',
+                   align: 'left',
+                   textAlign:'left'
                 }
+            },
+            title: {
+                display: true,
+                text: 'Weight last week (lbs)',
+                fontSize: 14
+            },
+            scales: {
+                yAxes:[{
+                    ticks:{
+                        suggestedMin:150
+                    }
+                }]
+            },
+            legend: {
+                position: 'top',
+                align:'end'
             }
-            if (weightData[1] - weightData[0] >= 2) {
-                gradient.addColorStop(0, "red");
-            } else {
-                gradient.addColorStop(0, "cyan");
-            }
+        };
+        const data = (canvas) => {
+            const context = canvas.getContext("2d");
+            console.log(canvas.clientWidth);    
+            const gradient = context.createLinearGradient(0,0,460,0);
+            this.renderGradient(weightData, gradient);
             return {
             labels: ['Nov 28', 'Nov 29', 'Nov 30', 'Dec 1', 'Dec 2', 'Dec 3', 'Dec 4'],
             datasets: [
@@ -46,24 +89,6 @@ class DashBoard extends Component {
                 data: weightData
               }
             ]
-            }
-        };
-        const options = {
-            title: {
-                display: true,
-                text: 'Weight last week (lbs)',
-                fontSize: 14
-            },
-            scales: {
-                yAxes:[{
-                    ticks:{
-                        suggestedMin:150
-                    }
-                }]
-            },
-            legend: {
-                position: 'top',
-                align:'end'
             }
         };
         return (
@@ -119,18 +144,17 @@ class DashBoard extends Component {
                 </div>
                 <div className="graph-container col-xl-9 col-lg-9 col-md-8">
                     <div className="row">
-                        <div className="col-xl-6"> <Line ref={(reference) => this.chartReference = reference } data={data} height={200} options={options} /></div>
-                        <div className="col-xl-6"><Line data={data} height={200} /></div>
+                        <div className="col-xl-6"> <Line ref={(reference) => {this.weightReference = reference} } 
+                             data={data} height={200} options={options} plugins={plugins}/></div>
+                        <div className="col-xl-6">{/*<Line data={data} height={200} /> */}</div>
                     </div>
                     <div className="row">
-                        <div className="col-xl-6"><Line data={data} height={200} /></div>
-                        <div className="col-xl-6"><Line data={data} height={200} /></div>
+                        <div className="col-xl-6">{/*<Line data={data} height={200} /> */}</div>
+                        <div className="col-xl-6">{/*<Line data={data} height={200} /> */}</div>
                     </div>
                 </div>
             </div>
-         
         </div>
-       
         );
     }
 }
