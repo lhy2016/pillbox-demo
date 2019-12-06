@@ -1,33 +1,78 @@
 import React, { Component } from 'react';
 import {Line, Chart} from 'react-chartjs-2';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import XAIDialogue from './xaiDialogue';
 import '../css/dashBoard.css';
 
 class DashBoard extends Component {
+
     weightReference = {};
+    
+    componentWillMount() {
+        Chart.pluginService.register({
+            beforeRender: function(chartInstance) {
+                console.log("beforeRender");
+                console.log(chartInstance);
+                var chartLeft = chartInstance.chartArea.left;
+                var chartRight = chartInstance.chartArea.right;
+                var context = chartInstance.chart.ctx
+                var gradient = context.createLinearGradient(chartLeft,0,chartRight,0);
+                var weightData = chartInstance.data.datasets[0].data;
+                for (var i = 1; i < weightData.length;i++) {
+                    if (weightData[i] - weightData[i-1] >= 2) {
+                        gradient.addColorStop(1.0 * i / (weightData.length - 1), "red");
+                    } else {
+                        gradient.addColorStop(1.0 * i / (weightData.length - 1), "cyan");
+                    }
+                }
+                if (weightData[1] - weightData[0] >= 2) {
+                    gradient.addColorStop(0, "red");
+                } else {
+                    gradient.addColorStop(0, "cyan");
+                }
+                console.log(gradient);
+                chartInstance.data.datasets[0].borderColor = gradient;
+                console.log(chartInstance.data.datasets[0].borderColor);
+            },
+            beforeUpdate: function(chartInstance) {
+                console.log("beforeUPdate");
+            }
+        });
+    }
     componentDidMount() {
+        console.log("componentDidMount()");
         Chart.plugins.unregister(ChartDataLabels);
         /* console.log(this.weightReference); */
         window.addEventListener("resize", ()=>{});
     }
 
-    renderGradient = (weightData, gradient) => {
-        for (var i = 1; i < weightData.length;i++) {
-            if (weightData[i] - weightData[i-1] >= 2) {
-                gradient.addColorStop(1.0 * i / (weightData.length - 1), "red");
-            } else {
-                gradient.addColorStop(1.0 * i / (weightData.length - 1), "cyan");
-            }
-        }
-        if (weightData[1] - weightData[0] >= 2) {
-            gradient.addColorStop(0, "red");
-        } else {
-            gradient.addColorStop(0, "cyan");
-        }
-    }
-
     render() {
-        const weightData = [162.4, 163.4, 162.8, 161, 163.6, 165.6, 163];
+        const Data = [162.4, 163.4, 162.8, 161, 163.6, 165.6, 163];
+    
+        const data = (canvas) => {
+            return {
+            labels: ['Nov 28', 'Nov 29', 'Nov 30', 'Dec 1', 'Dec 2', 'Dec 3', 'Dec 4'],
+            datasets: [
+              {
+                label: 'My First dataset',
+                fill: false,
+                lineTension: 0.34, 
+                borderCapStyle: 'butt',
+                borderJoinStyle: 'round',
+                pointBorderColor: '#777777',
+                pointBackgroundColor: '#ffffff',
+                pointBorderWidth: 1,
+                pointHoverRadius: 3,
+                pointHoverBackgroundColor: '#00ff00',
+                pointHoverBorderColor: '#ff0000',
+                pointHoverBorderWidth: 2,
+                pointRadius: 4,
+                pointHitRadius: 0,
+                data: Data
+              }
+            ]
+            }
+        };
         const plugins = [ChartDataLabels];
         const options = {
             plugins: {
@@ -35,7 +80,6 @@ class DashBoard extends Component {
                    display: function(ctx) {
                     return ctx.dataIndex === ctx.dataset.data.length - 1;
                    },
-                   
                    color: 'black',
                    formatter : function(value, context) {
                        return "Current: \n" + value + " lbs";
@@ -62,35 +106,7 @@ class DashBoard extends Component {
                 align:'end'
             }
         };
-        const data = (canvas) => {
-            const context = canvas.getContext("2d");
-            console.log(canvas.clientWidth);    
-            const gradient = context.createLinearGradient(0,0,460,0);
-            this.renderGradient(weightData, gradient);
-            return {
-            labels: ['Nov 28', 'Nov 29', 'Nov 30', 'Dec 1', 'Dec 2', 'Dec 3', 'Dec 4'],
-            datasets: [
-              {
-                label: 'My First dataset',
-                fill: false,
-                lineTension: 0.34, 
-                borderColor: gradient,
-                borderCapStyle: 'butt',
-                borderJoinStyle: 'round',
-                pointBorderColor: '#777777',
-                pointBackgroundColor: '#ffffff',
-                pointBorderWidth: 1,
-                pointHoverRadius: 3,
-                pointHoverBackgroundColor: '#00ff00',
-                pointHoverBorderColor: '#ff0000',
-                pointHoverBorderWidth: 2,
-                pointRadius: 4,
-                pointHitRadius: 0,
-                data: weightData
-              }
-            ]
-            }
-        };
+
         return (
         <div className="dashBoard">
             <div className="patient-title">
@@ -110,37 +126,7 @@ class DashBoard extends Component {
 						<div className="meters"><span className="meter-name">Oximeter(Pulse):</span> 80bpm</div>
 						<div className="meters"><span className="meter-name">Oximeter(SpO2):</span> 93%</div>
                     </div>
-                    <div className="xai-dialogue">
-                        <div className="xai-title">XAI-Dialogue</div>
-                        <div className="dialogue-container">
-                            <div className="ai-message">
-                                <div className="leftArrow"></div>
-                                Hi, Patient 1, how are you feeling today?
-                            </div>
-                            <div className="patient-message">
-                                <div className="rightArrow"></div>
-                                I still have minor chest pain and headache.
-                            </div>
-                            <div className="ai-message">
-                                <div className="leftArrow"></div>
-                                It seems that you didn't take your Aspirin pill this morning. Did you 
-                                forget?
-                            </div>
-                            <div className="patient-message">
-                                <div className="rightArrow"></div>
-                                Oh, sorry! I forgot.
-                            </div>
-                            <div className="ai-message">
-                                <div className="leftArrow"></div>
-                                No problem. Remember to take your pills on time. Take good rest and drink enough warm water.
-                                You are expected to get better in 2 days.
-                            </div>
-                             <div className="patient-message">
-                                <div className="rightArrow"></div>
-                                Sure. No problem. Thanks!
-                            </div>
-                        </div>
-                    </div>
+                    <XAIDialogue />
                 </div>
                 <div className="graph-container col-xl-9 col-lg-9 col-md-8">
                     <div className="row">
